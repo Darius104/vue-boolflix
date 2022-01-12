@@ -20,7 +20,8 @@ export default {
     return{
       nomeFilm: '',
       apiKey: '43b8d279f0f566005cd0114236cddf4e',
-      arrayFilm: []
+      arrayFilm: [],
+      italia: require('./assets/italia.png')
     }
   },
   methods: {
@@ -39,6 +40,11 @@ export default {
         }
       ).then((response) => {
         this.arrayFilm = response.data.results
+        for(let x = 0; x <= 19; x++){
+          if(this.arrayFilm[x].original_language === "it"){
+            this.arrayFilm[x].original_language = this.italia;
+          }
+        }
       });
     }
   }
