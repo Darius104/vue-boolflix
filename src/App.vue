@@ -21,7 +21,8 @@ export default {
       nomeFilm: '',
       apiKey: '43b8d279f0f566005cd0114236cddf4e',
       arrayFilm: [],
-      italia: require('./assets/italia.png')
+      italia: require('./assets/italia.png'),
+      inghilterra: require('./assets/Inghilterra.png')
     }
   },
   methods: {
@@ -43,7 +44,13 @@ export default {
         for(let x = 0; x <= 19; x++){
           if(this.arrayFilm[x].original_language === "it"){
             this.arrayFilm[x].original_language = this.italia;
-          }
+
+          }else{
+            if(this.arrayFilm[x].original_language === "en"){
+              this.arrayFilm[x].original_language = this.inghilterra;
+
+            }
+          } 
         }
       });
     }
@@ -52,5 +59,7 @@ export default {
 </script>
 
 <style lang="scss">
-
+img{
+  width: 100%;
+}
 </style>
