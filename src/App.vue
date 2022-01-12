@@ -1,27 +1,31 @@
 <template>
   <div id="app">
     <Header @passSearch="search" />
+    <All :moviesList="arrayFilm" />
   </div>
 </template>
 
 <script>
 import Header from "./components/Header.vue";
+import All from './components/All.vue'
 import axios from 'axios';
 
 export default {
   name: "App",
   components: {
     Header,
+    All
   },
   data: function(){
     return{
       nomeFilm: '',
-      apiKey: '43b8d279f0f566005cd0114236cddf4e'
+      apiKey: '43b8d279f0f566005cd0114236cddf4e',
+      arrayFilm: []
     }
   },
   methods: {
-    search: function(p){
-      this.nomeFilm = p
+    search: function(parametro){
+      this.nomeFilm = parametro
       this.film();
     },
     film: function(){
@@ -34,7 +38,7 @@ export default {
           }
         }
       ).then((response) => {
-        console.log(response)
+        this.arrayFilm = response.data.results
       });
     }
   }
