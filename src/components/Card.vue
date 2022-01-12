@@ -4,7 +4,7 @@
         <div>Titolo Originale: {{info.original_title}}</div>
         <div class="lingua">Lingua: </div>
         <img class="bandiera" :src="info.original_language" :alt="info.original_language">
-        <div>Voto: {{info.vote_average}}</div>
+        <div>Voto: {{ info.vote_average }}</div>
     </div>
 </template>
 

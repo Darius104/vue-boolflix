@@ -22,7 +22,8 @@ export default {
       apiKey: '43b8d279f0f566005cd0114236cddf4e',
       arrayFilm: [],
       italia: require('./assets/italia.png'),
-      inghilterra: require('./assets/Inghilterra.png')
+      inghilterra: require('./assets/Inghilterra.png'),
+      voto: 0
     }
   },
   methods: {
@@ -50,6 +51,11 @@ export default {
               this.arrayFilm[x].original_language = this.inghilterra;
 
             }
+            // this.arrayFilm[x].vote_average = this.voto;
+            // parseInt(this.voto);
+              this.arrayFilm[x].vote_average = (this.arrayFilm[x].vote_average).toFixed()
+              
+
           } 
         }
       });
