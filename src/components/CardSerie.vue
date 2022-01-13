@@ -5,7 +5,11 @@
         <div>Titolo Originale: {{infoSerie.original_name}}</div>
         <div class="lingua">Lingua: </div>
         <img class="bandiera" :src="infoSerie.original_language" :alt="infoSerie.original_language">
-        <div>Voto: {{ infoSerie.vote_average }}</div>
+        <div>
+            Voto:
+            <i class="fas fa-star" v-for="(elemento, indice) in infoSerie.vote_average" :key="indice" ></i>
+            <i class="far fa-star" v-for="(element, ind) in (5 - infoSerie.vote_average)" :key="ind"></i>
+        </div>
     </div>
 </template>
 

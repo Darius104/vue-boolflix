@@ -24,7 +24,7 @@ export default {
       arraySerie: [],
       italia: require('./assets/italia.png'),
       inghilterra: require('./assets/Inghilterra.png'),
-      // voto: 0
+      voto: 0
     }
   },
   methods: {
@@ -52,9 +52,7 @@ export default {
             if(this.arrayFilm[x].original_language === "en"){
               this.arrayFilm[x].original_language = this.inghilterra;
             }
-            // this.arrayFilm[x].vote_average = this.voto;
-            // parseInt(this.voto);
-            // this.arrayFilm[x].vote_average = (this.arrayFilm[x].vote_average).toFixed()
+            this.arrayFilm[x].vote_average = Math.ceil(this.arrayFilm[x].vote_average / 2)
           } 
         }
       });
@@ -78,9 +76,7 @@ export default {
             if(this.arraySerie[x].original_language === "en"){
               this.arraySerie[x].original_language = this.inghilterra;
             }
-            // this.arrayFilm[x].vote_average = this.voto;
-            // parseInt(this.voto);
-            // this.arrayFilm[x].vote_average = (this.arrayFilm[x].vote_average).toFixed()
+            this.arraySerie[x].vote_average = Math.ceil(this.arraySerie[x].vote_average / 2)
           } 
         }
       })
