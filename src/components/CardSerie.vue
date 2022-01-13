@@ -1,17 +1,23 @@
 <template>
     <div class="containerCard">
         <div class="movie">
-            <div><img class="foto" :src="'http://image.tmdb.org/t/p/w500/' + infoSerie.backdrop_path" alt=""></div>
-            <div>Titolo: {{infoSerie.name}}</div>
-            <div>Titolo Originale: {{infoSerie.original_name}}</div>
-            <div class="lingua">Lingua: </div>
-            <img class="bandiera" :src="infoSerie.original_language" :alt="infoSerie.original_language">
             <div>
-                Voto:
-                <i class="fas fa-star" v-for="(elemento, indice) in infoSerie.vote_average" :key="indice" ></i>
-                <i class="far fa-star" v-for="(element, ind) in (5 - infoSerie.vote_average)" :key="ind"></i>
+                <div class="contenitore-foto">
+                    <img class="foto" :src="'http://image.tmdb.org/t/p/w500/' + infoSerie.backdrop_path" alt="">
+                    <div class="information">
+                        <div>Titolo: {{infoSerie.name}}</div>
+                        <div>Titolo Originale: {{infoSerie.original_name}}</div>
+                        <div>Lingua: </div>
+                        <img class="bandiera" :src="infoSerie.original_language" :alt="infoSerie.original_language">
+                        <div>
+                            Voto:
+                            <i class="fas fa-star" v-for="(elemento, indice) in infoSerie.vote_average" :key="indice" ></i>
+                            <i class="far fa-star" v-for="(element, ind) in (5 - infoSerie.vote_average)" :key="ind"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </div>        
     </div>
 </template>
 
@@ -26,20 +32,34 @@ export default {
 
 <style lang="scss" scoped>
 .containerCard{
-    flex-basis: 20%;
-    
+    flex-basis: 25%;
+    position: relative;
     .movie{
         margin: 20px;
-        border: 1px solid black;
-        height: 400px;
+        .information{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            color: #fff;
+            visibility: hidden;
+            opacity: 0;
+        }
         .lingua{
             display: inline-block;
         }
         .bandiera{
             width: 20px;
         }
-        .foto{
-            width: 250px;
+        .contenitore-foto{
+            width: 100%;
+            position: relative;
+        }
+        .contenitore-foto:hover .information{
+            visibility: visible;
+            opacity: 1;
+            background-color: black;
         }
     }
 }
