@@ -33,10 +33,11 @@ export default {
     position: relative;
     .movie{
         margin: 20px;
-        
+
         .information{
             position: absolute;
             top: -80%;
+            z-index: 0;
         }
         .lingua{
             display: inline-block;
@@ -46,7 +47,10 @@ export default {
         }
         .foto{
             width: 100%;
-
+            z-index: 2;
+            &:hover{
+                display: none;
+            }
         }
     }
 }
