@@ -1,5 +1,6 @@
 <template>
     <div class="movie">
+        <div><img class="foto" :src="'http://image.tmdb.org/t/p/w500/' + info.backdrop_path" alt=""></div>
         <div>Titolo: {{info.title}}</div>
         <div>Titolo Originale: {{info.original_title}}</div>
         <div class="lingua">Lingua: </div>
@@ -26,6 +27,9 @@ export default {
     }
     .bandiera{
         width: 20px;
+    }
+    .foto{
+        width: 250px;
     }
 }
 </style>

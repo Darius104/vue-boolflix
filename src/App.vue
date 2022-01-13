@@ -51,13 +51,10 @@ export default {
           }else{
             if(this.arrayFilm[x].original_language === "en"){
               this.arrayFilm[x].original_language = this.inghilterra;
-
             }
             // this.arrayFilm[x].vote_average = this.voto;
             // parseInt(this.voto);
             // this.arrayFilm[x].vote_average = (this.arrayFilm[x].vote_average).toFixed()
-              
-
           } 
         }
       });
@@ -80,13 +77,10 @@ export default {
           }else{
             if(this.arraySerie[x].original_language === "en"){
               this.arraySerie[x].original_language = this.inghilterra;
-
             }
             // this.arrayFilm[x].vote_average = this.voto;
             // parseInt(this.voto);
             // this.arrayFilm[x].vote_average = (this.arrayFilm[x].vote_average).toFixed()
-              
-
           } 
         }
       })
