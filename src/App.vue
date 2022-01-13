@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header @passSearch="search" />
-    <All :moviesList="arrayFilm" />
+    <All :moviesList="arrayFilm" :serieList="arraySerie"/>
   </div>
 </template>
 
@@ -21,15 +21,17 @@ export default {
       nomeFilm: '',
       apiKey: '43b8d279f0f566005cd0114236cddf4e',
       arrayFilm: [],
+      arraySerie: [],
       italia: require('./assets/italia.png'),
       inghilterra: require('./assets/Inghilterra.png'),
-      voto: 0
+      // voto: 0
     }
   },
   methods: {
     search: function(parametro){
       this.nomeFilm = parametro
       this.film();
+      this.serie();
     },
     film: function(){
       axios.get(
@@ -53,12 +55,41 @@ export default {
             }
             // this.arrayFilm[x].vote_average = this.voto;
             // parseInt(this.voto);
-              this.arrayFilm[x].vote_average = (this.arrayFilm[x].vote_average).toFixed()
+            // this.arrayFilm[x].vote_average = (this.arrayFilm[x].vote_average).toFixed()
               
 
           } 
         }
       });
+    },
+    serie: function(){
+      axios.get(
+        'https://api.themoviedb.org/3/search/tv',
+        {
+          params:{
+            api_key: this.apiKey,
+            query: this.nomeFilm
+          }
+        }
+      ).then((response) =>{
+        this.arraySerie = response.data.results
+        for(let x = 0; x <= 19; x++){
+          if(this.arraySerie[x].original_language === "it"){
+            this.arraySerie[x].original_language = this.italia;
+
+          }else{
+            if(this.arraySerie[x].original_language === "en"){
+              this.arraySerie[x].original_language = this.inghilterra;
+
+            }
+            // this.arrayFilm[x].vote_average = this.voto;
+            // parseInt(this.voto);
+            // this.arrayFilm[x].vote_average = (this.arrayFilm[x].vote_average).toFixed()
+              
+
+          } 
+        }
+      })
     }
   }
 };
