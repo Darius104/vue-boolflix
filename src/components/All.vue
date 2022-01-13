@@ -1,10 +1,14 @@
 <template>
     <main>
         <h2>Film</h2>
-        <Card v-for="movie in moviesList" :key="movie.id" :info="movie"/>
+        <div class="contenitore">
+            <Card v-for="movie in moviesList" :key="movie.id" :info="movie"/>
+        </div>
 
         <h2>Serie</h2>
-        <CardSerie v-for="serie in serieList" :key="serie.id" :infoSerie="serie"/>
+        <div class="contenitore">
+            <CardSerie v-for="serie in serieList" :key="serie.id" :infoSerie="serie"/>
+        </div>
     </main>
 </template>
 
@@ -28,8 +32,16 @@ export default {
 
 <style lang="scss" scoped>
 main{
-    width: 100%;
-    height: calc(100% - 100px);
+    height: calc(100vh - 100px);
     background-color: gray;
+    overflow-y: hidden;
+    overflow-y: auto;
+
+    .contenitore{
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
 }
 </style>
