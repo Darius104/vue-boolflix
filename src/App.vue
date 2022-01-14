@@ -27,7 +27,8 @@ export default {
       arraySerie: [],
       italia: require('./assets/italia.png'),
       inghilterra: require('./assets/Inghilterra.png'),
-      voto: 0
+      voto: 0,
+      none: require('./assets/noimg.png')
     }
   },
   methods: {
@@ -56,6 +57,7 @@ export default {
 
         // ciclo per tutta lal lunghezza dell'arrayFilm 
         for(let x = 0; x <= this.arrayFilm.length; x++){
+
           // se nell'iterazione attuale la variabile original_lagnuage è uguale ad "it"
           if(this.arrayFilm[x].original_language === "it"){
             // sostituiamo la stringa attuale con il contenuto della variabile italia
@@ -71,7 +73,15 @@ export default {
             // vote_avarage con il risultato di questa funzione matematica.
             // prendo il voto attuale di vote_avarage e lo divido per 2 arrotondando il risultato per eccesso
             this.arrayFilm[x].vote_average = Math.ceil(this.arrayFilm[x].vote_average / 2)
-          } 
+          }
+          // vado a controllare se l'immagine dell'array è nulla o meno
+          if(this.arrayFilm[x].backdrop_path === null){
+            // inserisco l'immagine di default none
+            this.arrayFilm[x].backdrop_path = this.none
+          }else{
+            // altrimenti inserisco il path base + quello dell'immgaine corrente
+            this.arrayFilm[x].backdrop_path = 'http://image.tmdb.org/t/p/w500/' + this.arrayFilm[x].backdrop_path
+          }
         }
       });
     },
@@ -108,7 +118,15 @@ export default {
             // vote_avarage con il risultato di questa funzione matematica.
             // prendo il voto attuale di vote_avarage e lo divido per 2 arrotondando il risultato per eccesso
             this.arraySerie[x].vote_average = Math.ceil(this.arraySerie[x].vote_average / 2)
-          } 
+          }
+          // vado a controllare se l'immagine dell'array è nulla o meno
+          if(this.arraySerie[x].backdrop_path === null){
+            // inserisco l'immagine di default none
+            this.arraySerie[x].backdrop_path = this.none
+          }else{
+            // altrimenti inserisco il path base + quello dell'immgaine corrente
+            this.arraySerie[x].backdrop_path = 'http://image.tmdb.org/t/p/w500/' + this.arraySerie[x].backdrop_path
+          }
         }
       })
     }

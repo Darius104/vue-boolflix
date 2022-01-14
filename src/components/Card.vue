@@ -4,7 +4,7 @@
         <div class="movie">
             <div>
                 <div class="contenitore-foto">
-                    <img class="foto" :src="'http://image.tmdb.org/t/p/w500/' + info.backdrop_path" alt="">
+                    <img class="foto" :src="info.backdrop_path" alt="">
                     <div class="information">
                         <div>Titolo: {{info.title}}</div>
                         <div>Titolo Originale: {{info.original_title}}</div>
