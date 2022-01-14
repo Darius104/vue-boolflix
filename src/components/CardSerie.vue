@@ -1,4 +1,5 @@
 <template>
+<!-- creazione card Seire -->
     <div class="containerCard">
         <div class="movie">
             <div>

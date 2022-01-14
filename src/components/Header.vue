@@ -2,7 +2,9 @@
     <header>
         <h1>BOOLFLIX</h1>
         <div class="search">
+            <!-- input search -->
             <input v-model="userSearch" type="text">
+            <!-- button che manda al padre app.vue la ricerca dell'utente -->
             <button @click="$emit('passSearch', userSearch)">search</button>
         </div>
     </header>
@@ -14,6 +16,7 @@ export default {
 
     data: function(){
         return{
+            // variabile creata per immagazzinare la ricerca dell'utente
             userSearch: ''
         }
     }

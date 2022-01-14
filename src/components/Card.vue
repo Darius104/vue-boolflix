@@ -1,4 +1,5 @@
 <template>
+<!-- creazione card Film -->
     <div class="containerCard">
         <div class="movie">
             <div>
