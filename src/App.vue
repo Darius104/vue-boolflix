@@ -52,39 +52,10 @@ export default {
         }
       // risposta dell'api
       ).then((response) => {
-        // inseirsco dentro l'array dei film la risposta dell'api
-        this.arrayFilm = response.data.results
-
-        // ciclo per tutta lal lunghezza dell'arrayFilm 
-        for(let x = 0; x <= this.arrayFilm.length; x++){
-
-          // se nell'iterazione attuale la variabile original_lagnuage è uguale ad "it"
-          if(this.arrayFilm[x].original_language === "it"){
-            // sostituiamo la stringa attuale con il contenuto della variabile italia
-            this.arrayFilm[x].original_language = this.italia;
-
-          }else{
-            // altrimenti se nell'iterazione attuale la variabile original_lagnuage è uguale ad "en"
-            if(this.arrayFilm[x].original_language === "en"){
-              // sostituiamo il contenutro della stringa attuale con il contenuto della variabile inghilterra
-              this.arrayFilm[x].original_language = this.inghilterra;
-            }
-            // per ogni iterazione del ciclo vado a sostituire il contenuto della variabile
-            // vote_avarage con il risultato di questa funzione matematica.
-            // prendo il voto attuale di vote_avarage e lo divido per 2 arrotondando il risultato per eccesso
-            this.arrayFilm[x].vote_average = Math.ceil(this.arrayFilm[x].vote_average / 2)
-          }
-          // vado a controllare se l'immagine dell'array è nulla o meno
-          if(this.arrayFilm[x].backdrop_path === null){
-            // inserisco l'immagine di default none
-            this.arrayFilm[x].backdrop_path = this.none
-          }else{
-            // altrimenti inserisco il path base + quello dell'immgaine corrente
-            this.arrayFilm[x].backdrop_path = 'http://image.tmdb.org/t/p/w500/' + this.arrayFilm[x].backdrop_path
-          }
-        }
+        this.arrayFilm = this.populateCard(response.data.results)
       });
     },
+
     serie: function(){
       // richiamiamo le seirie dall'api
       axios.get(
@@ -98,37 +69,39 @@ export default {
         }
       // risposta dell'api
       ).then((response) =>{
-        // inserisco dentro all'array vuoto arraySerie la risposta dell'api
-        this.arraySerie = response.data.results
+        this.arraySerie = this.populateCard(response.data.results)
+      })
+    },
 
-        // ciclo per tutta lal lunghezza dell'arraySerie 
-        for(let x = 0; x <= this.arraySerie.length; x++){
+    populateCard: function(array){
+        // ciclo per tutta lal lunghezza dell'array 
+        for(let x = 0; x < array.length; x++){
           // se nell'iterazione attuale la variabile original_lagnuage è uguale ad "it"
-          if(this.arraySerie[x].original_language === "it"){
+          if(array[x].original_language === "it"){
             // sostituiamo la stringa attuale con il contenuto della variabile italia
-            this.arraySerie[x].original_language = this.italia;
+            array[x].original_language = this.italia;
 
           }else{
             // altrimenti se nell'iterazione attuale la variabile original_lagnuage è uguale ad "en"
-            if(this.arraySerie[x].original_language === "en"){
+            if(array[x].original_language === "en"){
               // sostituiamo il contenutro della stringa attuale con il contenuto della variabile inghilterra
-              this.arraySerie[x].original_language = this.inghilterra;
+              array[x].original_language = this.inghilterra;
             }
             // per ogni iterazione del ciclo vado a sostituire il contenuto della variabile
             // vote_avarage con il risultato di questa funzione matematica.
             // prendo il voto attuale di vote_avarage e lo divido per 2 arrotondando il risultato per eccesso
-            this.arraySerie[x].vote_average = Math.ceil(this.arraySerie[x].vote_average / 2)
+            array[x].vote_average = Math.ceil(array[x].vote_average / 2)
           }
           // vado a controllare se l'immagine dell'array è nulla o meno
-          if(this.arraySerie[x].backdrop_path === null){
+          if(array[x].backdrop_path === null){
             // inserisco l'immagine di default none
-            this.arraySerie[x].backdrop_path = this.none
+            array[x].backdrop_path = this.none
           }else{
             // altrimenti inserisco il path base + quello dell'immgaine corrente
-            this.arraySerie[x].backdrop_path = 'http://image.tmdb.org/t/p/w500/' + this.arraySerie[x].backdrop_path
+            array[x].backdrop_path = 'http://image.tmdb.org/t/p/w500/' + array[x].backdrop_path
           }
         }
-      })
+        return array;
     }
   }
 };
