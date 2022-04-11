@@ -6,14 +6,16 @@
                 <div class="contenitore-foto">
                     <img class="foto" :src="info.backdrop_path" alt="">
                     <div class="information">
-                        <div>Titolo: {{info.title}}</div>
-                        <div>Titolo Originale: {{info.original_title}}</div>
-                        <div>Lingua: </div>
-                        <img class="bandiera" :src="info.original_language" :alt="info.original_language">
-                        <div>
-                            Voto:
-                            <i class="fas fa-star" v-for="(elemento, indice) in info.vote_average" :key="indice" ></i>
-                            <i class="far fa-star" v-for="(element, ind) in (5 - info.vote_average)" :key="ind"></i>
+                        <div class="text-over">
+                            <div>Titolo: {{info.title}}</div>
+                            <div>Titolo Originale: {{info.original_title}}</div>
+                            <div>Lingua: </div>
+                            <img class="bandiera" :src="info.original_language" :alt="info.original_language">
+                            <div>
+                                Voto:
+                                <i class="fas fa-star" v-for="(elemento, indice) in info.vote_average" :key="indice" ></i>
+                                <i class="far fa-star" v-for="(element, ind) in (5 - info.vote_average)" :key="ind"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -46,6 +48,12 @@ export default {
             color: #fff;
             visibility: hidden;
             opacity: 0;
+
+            .text-over{
+                padding: 20px;
+                line-height: 30px;
+                font-weight: bold;
+            }
         }
         .lingua{
             display: inline-block;
@@ -61,6 +69,7 @@ export default {
             visibility: visible;
             opacity: 1;
             background-color: black;
+            cursor: pointer;
         }
     }
 }
